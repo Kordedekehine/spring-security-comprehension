@@ -2,7 +2,7 @@ package com.practice.poll.practice.model;
 
 import org.hibernate.annotations.NaturalId;
 
-import javax.management.relation.Role;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -50,7 +50,6 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
-
     }
 
     public User(String name, String username, String email, String password) {

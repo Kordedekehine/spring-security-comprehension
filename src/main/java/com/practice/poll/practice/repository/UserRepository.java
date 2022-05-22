@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-//It contains a single method to retrieve a Role from the RoleName-
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
