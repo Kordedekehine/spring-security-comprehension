@@ -1,4 +1,4 @@
-package com.practice.poll.practice.Config;
+package com.practice.poll.practice.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,4 +59,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         return null;
     }
+
+//    We use JWTAuthenticationFilter to implement a filter that -
+//
+//    reads JWT authentication token from the Authorization header of all the requests
+//    validates the token
+//    loads the user details associated with that token.
+//    Sets the user details in Spring Security’s SecurityContext. Spring Security uses
+//    the user details to perform authorization checks. We can
+//    also access the user details stored in the SecurityContext in our controllers to perform our business logic.
 }

@@ -1,4 +1,4 @@
-package com.practice.poll.practice.Config;
+package com.practice.poll.practice.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
@@ -32,6 +32,7 @@ public class JwtTokenProvider { //majorly for generating and verifying jwt
                .setSubject(Long.toString(userPrincipal.getId()))
                .setIssuedAt(new Date())
                .setExpiration(expiryDate)
+            //   .signWith(SignatureAlgorithm.HS512,jwtSecret)
                .signWith(SignatureAlgorithm.HS512,jwtSecret)
                .compact();
    }

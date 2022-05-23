@@ -1,7 +1,8 @@
-package com.practice.poll.practice.Config;
+package com.practice.poll.practice.security;
 
 import com.practice.poll.practice.model.User;
 import com.practice.poll.practice.repository.UserRepository;
+import com.practice.poll.practice.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package com.practice.poll.practice.Config;
+package com.practice.poll.practice.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,9 @@ import java.io.IOException;
 
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
+//This class is used to return
+// a 401 unauthorized error to clients that try to
+// access a protected resource without proper authentication
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationEntryPoint.class);
 
     @Override

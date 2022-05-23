@@ -1,4 +1,4 @@
-package com.practice.poll.practice.Config;
+package com.practice.poll.practice.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.practice.poll.practice.model.User;
