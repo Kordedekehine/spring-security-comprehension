@@ -66,6 +66,11 @@ public class AuthController {
             return new ResponseEntity(new ApiResponse(false,"USERNAME IS ALREADY TAKEN"),
                     HttpStatus.BAD_REQUEST);
         }
+
+        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return new ResponseEntity(new ApiResponse(false, "EMAIL IS ALREADY IN USE"),
+                    HttpStatus.BAD_REQUEST);
+        }
         //NEW? Create user account..
         User user = new User(signUpRequest.getName(),signUpRequest.getUsername(),
                 signUpRequest.getEmail(),signUpRequest.getPassword());
