@@ -20,8 +20,8 @@ import java.time.Instant;
 public abstract class DateAudit implements Serializable {
 
     @CreatedDate
-    @Column(nullable = false, updatable = false) //you can't update the time or do away with it
-  private Instant createdAt;
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
 
     @LastModifiedDate
     @Column(nullable = false)

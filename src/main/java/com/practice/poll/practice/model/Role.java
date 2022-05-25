@@ -1,14 +1,18 @@
 package com.practice.poll.practice.model;
 
+import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+
+import static org.hibernate.annotations.GenerationTime.INSERT;
 
 @Entity
 @Table(name = "roles")
 public class Role {
 
     @Id
+    @NaturalId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
