@@ -72,4 +72,14 @@ public class Poll extends UserDateAudit {
     public void setExpirationDateAndTime(Instant expirationDateAndTime) {
         this.expirationDateAndTime = expirationDateAndTime;
     }
+
+    public void addChoice(Choice choice) {
+        choices.add(choice);
+        choice.setPoll(this);
+    }
+
+    public void removeChoice(Choice choice) {
+        choices.remove(choice);
+        choice.setPoll(null);
+    }
 }
