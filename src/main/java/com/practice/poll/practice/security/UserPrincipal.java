@@ -42,6 +42,7 @@ public class UserPrincipal implements UserDetails {
         return new UserPrincipal(
                 user.getId(), user.getUsername(),user.getName(),
                 user.getEmail(), user.getPassword(), authorities);
+        //This is because we specify role as an entire class
     }
 
     public Long getId() {
