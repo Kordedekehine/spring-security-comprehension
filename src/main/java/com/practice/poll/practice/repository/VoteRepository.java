@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -18,22 +19,35 @@ import java.util.List;
 //we’re using JPQL instead of JPA constructor expression in some of the queries to return the query result
 // in the form of
 // a custom class called ChoiceVoteCount
+
+
+//ANSWER
+//Hi,
+//
+//Since your package names are different, you will need to change the fully qualified class name of the ChoiceVoteCount class in the following queries -
+//
+//@Query("SELECT NEW com.example.polls.model.ChoiceVoteCount(v.choice.id, count(v.id)) FROM Vote v WHERE v.poll.id in :pollIds GROUP BY v.choice.id")
+//List<ChoiceVoteCount> countByPollIdInGroupByChoiceId(@Param("pollIds") List<Long> pollIds);
+//
+//@Query("SELECT NEW com.example.polls.model.ChoiceVoteCount(v.choice.id, count(v.id)) FROM Vote v WHERE v.poll.id = :pollId GROUP BY v.choice.id")
+//List<ChoiceVoteCount> countByPollIdGroupByChoiceId(@Param("pollId") Long pollId);
+
 @Repository
 public interface VoteRepository extends JpaRepository<Vote,Long> {
    // The ChoiceVoteCount class is used in VoteRepository to return custom results from the query
 
 
-    //evoke from the choice count class the choice and the id  of the voter in the Vote class and group by id
-    @Query("SELECT NEW com.practice.poll.practice.model.ChoiceVoteCount(v.choice.id,count(v.id)) FROM Vote" +
-            "v WHERE v.poll.id = :pollId GROUP BY v.choice.id")
+   // evoke from the choice count class the choice and the id  of the voter in the Vote class and group by id
+    @Query("SELECT NEW com.practice.poll.practice.model.ChoiceVoteCount(v.choice.id,count(v.id)) FROM " +
+            "Vote v WHERE v.poll.id in :pollIds GROUP BY v.choice.id")
     List<ChoiceVoteCount> countByPollIdInGroupByChoiceId(@Param("pollIds")List<Long> pollIds);
 
     //evoke from the choice count class the id  of the voter in the Vote class and group by id
-    @Query("SELECT NEW com.practice.poll.practice.model.ChoiceVoteCount(v.choice.id, count(v.id)) FROM Vote v " +
-            "WHERE v.poll.id = :pollId GROUP BY v.choice.id")
-    List<ChoiceVoteCount> countByPollIdGroupByChoiceId(@Param("pollId")  Long pollIds);
+    @Query("SELECT NEW   com.practice.poll.practice.model.ChoiceVoteCount  (v.choice.id, count(v.id)) FROM Vote v WHERE" +
+            " v.poll.id = :pollId GROUP BY v.choice.id")
+List<ChoiceVoteCount> countByPollIdGroupByChoiceId(@Param("pollId") Long pollId);
 
-    //evoke from vote where the id is...then collate the user and the vote id
+   // evoke from vote where the id is...then collate the user and the vote id
     @Query("SELECT v FROM Vote v where v.user.id = :userId and v.poll.id in :pollIds")
     List<Vote> findByUserIdAndPollIdIn(@Param("userId") Long userId, @Param("pollIds") List<Long> pollIds);
 

@@ -48,17 +48,6 @@ public class AuthController {
     @Autowired
     JwtTokenProvider jwtTokenProvider;
 
-//    @PostMapping("/signin")
-//    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
-//
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-//                loginRequest.getUsernameOrEmail(),
-//                loginRequest.getPassword()
-//        ));
-//
-//        SecurityContextHolder.getContext().setAuthentication(authentication); //Todo
-//        return ResponseEntity.ok(new JwtAuthenticationResponse(jwtTokenProvider.generateToken(authentication)));
-//    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

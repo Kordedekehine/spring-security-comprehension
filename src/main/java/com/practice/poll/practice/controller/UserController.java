@@ -26,7 +26,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
@@ -50,7 +50,7 @@ public class UserController {
       return userSummary;
   }
 
-  @GetMapping("/user/checkUserAvailabilityStatus")
+  @GetMapping("/user/checkUserNameAvailabilityStatus")
   public UserIdAvailability checkUserAvailabilityStatus(@RequestParam(value = "username") String username){
       Boolean isUserAvailable = !userRepository.existsByUsername(username);
       return new UserIdAvailability(isUserAvailable);

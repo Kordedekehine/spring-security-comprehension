@@ -17,7 +17,7 @@ public class Choice {
     private String text;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "poll_id",nullable = false)
+    // @JoinColumn(name = "poll_id",nullable = false)
     private Poll poll;
 
     public Choice() {

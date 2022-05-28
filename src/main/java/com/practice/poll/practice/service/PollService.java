@@ -37,8 +37,8 @@ public class PollService {
     @Autowired
     private PollRepository pollRepository;
 
-    @Autowired
-    private VoteRepository voteRepository;
+@Autowired
+private VoteRepository voteRepository;
 
     @Autowired
     private UserRepository userRepository;
